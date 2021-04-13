@@ -1,0 +1,14 @@
+
+#authorization for api file, only accessible for users with password (see .htpassword)
+#this currently works on the remote server as well
+
+#KEEP THE COMMENTS ON DEV
+#ON PRODUCTION SERVER THERE IS A FILE WITHOUT COMMENTS FOR AUTHORIZATION
+
+#Protect File
+#<Files api.php>
+#AuthName "Dialog prompt"
+#AuthType Basic
+#AuthUserFile /data/sites/web/chatsterbe/www/server/api/.htpasswd
+#Require valid-user
+#</Files>
