@@ -10,7 +10,7 @@ class Database{
             $db_password = 'pur3r4nd0mn3ss';
         } else {
             $db_host = 'localhost';
-            $db_name = 'messaging_app';
+            $db_name = 'shopping_app';
             $db_username = 'root';
             $db_password = 'rootpass';
         }

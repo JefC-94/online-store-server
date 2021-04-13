@@ -11705,7 +11705,7 @@ namespace Tqdev\PhpCrudApi {
             // 'port' => '3306',
             'username' => 'root',
             'password' => 'rootpass',
-            'database' => 'messaging_app',
+            'database' => 'shopping_app',
             // 'debug' => false
         ]);
     }
