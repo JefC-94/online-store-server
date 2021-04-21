@@ -9,6 +9,6 @@
 #<Files api.php>
 #AuthName "Dialog prompt"
 #AuthType Basic
-#AuthUserFile /data/sites/web/chatsterbe/subsites/fantasticstore/server/api/.htpasswd
+#AuthUserFile /data/sites/web/chatsterbe/subsites/fantastic-store.be/server/api/.htpasswd
 #Require valid-user
 #</Files>

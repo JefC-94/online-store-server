@@ -11685,19 +11685,19 @@ namespace Tqdev\PhpCrudApi {
     use Tqdev\PhpCrudApi\RequestFactory;
     use Tqdev\PhpCrudApi\ResponseUtils;
 
-    if($_SERVER['SERVER_NAME'] === 'chatster.be'){
+    /* if($_SERVER['SERVER_NAME'] === 'chatster.be'){ */
         
-        $config = new Config([
+        /* $config = new Config([
             // 'driver' => 'mysql',
-            'address' => 'ID348579_messagingapp.db.webhosting.be',
+            'address' => 'ID348579_fantasticstore.db.webhosting.be',
             //'port' => '3306',
-            'username' => 'ID348579_messagingapp',
-            'password' => 'pur3r4nd0mn3ss',
-            'database' => 'ID348579_messagingapp',
+            'username' => 'ID348579_fantasticstore',
+            'password' => 'st0r3f0rl1f3',
+            'database' => 'ID348579_fantasticstore',
             // 'debug' => false
-        ]);
+        ]); */
 
-    } else {
+    /* } else { */
 
         $config = new Config([
             // 'driver' => 'mysql',
@@ -11708,7 +11708,7 @@ namespace Tqdev\PhpCrudApi {
             'database' => 'shopping_app',
             // 'debug' => false
         ]);
-    }
+    //}
     
     $request = RequestFactory::fromGlobals();
     $api = new Api($config);
