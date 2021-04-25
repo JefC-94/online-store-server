@@ -31,14 +31,14 @@ elseif(!isset($data->email)
     || empty(trim($data->email))
     ):
 
-    $returnData = msg(0,422,json_encode(array('type' => 'email', 'message' => 'Please fill in your email.')));
+    $returnData = msg(0,422,json_encode(array('type' => 'email', 'message' => 'Vul een e-mailadres in')));
 
 elseif(!isset($data->password)
     || empty(trim($data->password))
     ):
     
     
-    $returnData = msg(0,422,json_encode(array('type' => 'password', 'message' => 'Please fill in your password.')));
+    $returnData = msg(0,422,json_encode(array('type' => 'password', 'message' => 'Vul een paswoord in')));
 
 
 // IF THERE ARE NO EMPTY FIELDS THEN-
@@ -48,7 +48,7 @@ else:
 
     // CHECKING THE EMAIL FORMAT (IF INVALID FORMAT)
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)):
-        $returnData = msg(0,422, json_encode(array('type' => 'email', 'message' => "We're sorry, this is not a valid e-mail address.")));
+        $returnData = msg(0,422, json_encode(array('type' => 'email', 'message' => "Sorry, dit is geen geldig e-mailadres")));
 
     // THE USER IS ABLE TO PERFORM THE LOGIN ACTION
     else:
@@ -77,18 +77,18 @@ else:
                     
                     $returnData = [
                         'success' => 1,
-                        'message' => 'You have successfully logged in.',
+                        'message' => 'Je bent ingelogd.',
                         'token' => $token
                     ];
 
                 // IF INVALID PASSWORD
                 else:
-                    $returnData = msg(0,422,json_encode(array('type' => 'password', 'message' => 'This password is incorrect.')));
+                    $returnData = msg(0,422,json_encode(array('type' => 'password', 'message' => 'Incorrect paswoord')));
                 endif;
 
             // IF THE USER IS NOT FOUNDED BY EMAIL THEN SHOW THE FOLLOWING ERROR
             else:
-                $returnData = msg(0,422,json_encode(array('type' => 'email', 'message' => 'This e-mail address is not registered.')));
+                $returnData = msg(0,422,json_encode(array('type' => 'email', 'message' => 'Dit e-mailadres is niet geregistreerd')));
             endif;
         }
         catch(PDOException $e){

@@ -31,19 +31,19 @@ elseif(!isset($data->username)
     || empty(trim($data->username))
     ):
 
-    $returnData = msg(0,422,json_encode(array('type' => 'username', 'message' => 'Please fill in a username.')));
+    $returnData = msg(0,422,json_encode(array('type' => 'username', 'message' => 'Vul een gebruikersnaam in')));
 
 elseif(!isset($data->email) 
     || empty(trim($data->email))
     ):
 
-    $returnData = msg(0,422,json_encode(array('type' => 'email', 'message' => 'Please fill in an e-mail address.')));
+    $returnData = msg(0,422,json_encode(array('type' => 'email', 'message' => 'Vul een e-mailadres in')));
 
 elseif(!isset($data->password)
     || empty(trim($data->password))
     ):
 
-    $returnData = msg(0,422,json_encode(array('type' => 'password', 'message' => 'Please fill in a password.')));
+    $returnData = msg(0,422,json_encode(array('type' => 'password', 'message' => 'Vul een wachtwoord in')));
 
 // IF THERE ARE NO EMPTY FIELDS THEN-
 else:
@@ -55,13 +55,13 @@ else:
      
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)):
-        $returnData = msg(0,422, json_encode(array('type' => 'email', 'message' => 'This is not a valid e-mail address.')));
+        $returnData = msg(0,422, json_encode(array('type' => 'email', 'message' => 'Sorry, dit is geen geldig e-mailadres')));
     
     elseif(strlen($password) < 8):
-        $returnData = msg(0,422, json_encode(array('type' => 'password', 'message' => 'Your password must be at least 8 characters long.')));
+        $returnData = msg(0,422, json_encode(array('type' => 'password', 'message' => 'Je wachtwoord moet minstens 8 tekens lang zijn')));
 
     elseif(strlen($username) < 3):
-        $returnData = msg(0,422, json_encode(array('type' => 'username', 'message' => 'Your username must be at least 3 characters long.')));
+        $returnData = msg(0,422, json_encode(array('type' => 'username', 'message' => 'Je gebruikersnaam moet minstens 3 tekens lang zijn')));
 
     else:
         try{
@@ -72,7 +72,7 @@ else:
             $check_email_stmt->execute();
 
             if($check_email_stmt->rowCount()):
-                $returnData = msg(0,422, json_encode(array('type' => 'email', 'message' => "We're sorry, this e-mail already in use.")));
+                $returnData = msg(0,422, json_encode(array('type' => 'email', 'message' => "Dit e-mailadres staat al geregistreerd")));
             
             else:
                 $insert_query = "INSERT INTO `users`(`username`,`email`,`password`,`created_at`) VALUES(:username,:email,:password,:createdat)";
@@ -87,7 +87,9 @@ else:
 
                 $insert_stmt->execute();
 
-                $returnData = msg(1,201,'You have successfully registered.');
+                $last_id = $conn->lastInsertId();
+
+                $returnData = msg($last_id,201,'Je bent registreerd!');
 
             endif;
 
